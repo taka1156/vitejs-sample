@@ -1,31 +1,40 @@
 <template>
-  <form @submit.prevent>
-    <base-label id="sample-text">テキスト</base-label>
-    <base-input
-      id="sample-text"
-      name="sample-text"
-      type="text"
-      placeholder="テキスト"
-      v-model:value="state.sampleText"
-    />
-    <base-label id="sample-password">パスワード</base-label>
-    <base-input
-      id="sample-password"
-      name="sample-password"
-      type="password"
-      placeholder="パスワード"
-      v-model:value="state.samplePassword"
-    />
-    <base-label id="sample-textarea">テキスエリア</base-label>
-    <base-text-area
-      id="sample-textarea"
-      name="sample-textarea"
-      :rows="3"
-      :cols="50"
-      placeholder="テキストエリア"
-      v-model:value="state.sampleTextarea"
-    />
-    <fieldset>
+  <form class="form-box" @submit.prevent>
+    <fieldset class="form-bpx__fieldset">
+      <legend>inputフォーム</legend>
+      <div class="form-box__input">
+        <base-label id="sample-text">テキスト</base-label>
+        <base-input
+          id="sample-text"
+          name="sample-text"
+          type="text"
+          placeholder="テキスト"
+          v-model:value="state.sampleText"
+        />
+      </div>
+      <div class="form-box__input">
+        <base-label id="sample-password">パスワード</base-label>
+        <base-input
+          id="sample-password"
+          name="sample-password"
+          type="password"
+          placeholder="パスワード"
+          v-model:value="state.samplePassword"
+        />
+      </div>
+      <div class="form-box__input">
+        <base-label id="sample-textarea">テキスエリア</base-label>
+        <base-text-area
+          id="sample-textarea"
+          name="sample-textarea"
+          :rows="3"
+          :cols="50"
+          placeholder="テキストエリア"
+          v-model:value="state.sampleTextarea"
+        />
+      </div>
+    </fieldset>
+    <fieldset class="form-bpx__fieldset">
       <base-label id="front-used">Frontend</base-label>
       <legend>使ったことのあるフレームワークは?</legend>
       <base-select
@@ -35,7 +44,7 @@
         v-model:value="state.sampleSelect"
       />
     </fieldset>
-    <fieldset>
+    <fieldset class="form-bpx__fieldset">
       <legend>使ったことのある言語は?</legend>
       <base-radio
         name="backend-used"
@@ -43,7 +52,7 @@
         v-model:value="state.sampleRadio"
       />
     </fieldset>
-    <fieldset>
+    <fieldset class="form-bpx__fieldset">
       <legend>今後学びたい言語は?</legend>
       <base-check-box
         name="next-learning"
@@ -94,4 +103,21 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.form-box {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.form-bpx__fieldset {
+  margin: 10px auto;
+  width: 80%;
+}
+
+.form-box__input {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 60%;
+}
+</style>

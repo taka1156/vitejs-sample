@@ -17,7 +17,7 @@ import { defineComponent, PropType, reactive, SetupContext } from 'vue';
 import BaseLabel from './BaseLabel.vue';
 
 type CheckboxState = {
-  values: [] | string[];
+  values: string[];
 };
 
 export default defineComponent({

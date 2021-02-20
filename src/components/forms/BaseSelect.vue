@@ -1,6 +1,6 @@
 <template>
   <select :id="id" :name="name" @change="updateValue">
-    <option selected>選択してください</option>
+    <option disabled selected value>選択してください</option>
     <template v-for="(option, index) in options" :key="`${name}_${index}`">
       <option :value="option.value">
         {{ option.label }}

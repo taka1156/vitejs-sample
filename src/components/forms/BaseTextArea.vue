@@ -12,6 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, SetupContext, PropType } from 'vue';
+
 export default defineComponent({
   name: 'BaseTextArea',
   props: {
@@ -46,7 +47,7 @@ export default defineComponent({
         context.emit('update:value', e.target.value);
       }
     };
-    return { updateValue, props };
+    return { props, updateValue };
   }
 });
 </script>
