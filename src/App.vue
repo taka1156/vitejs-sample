@@ -1,5 +1,4 @@
 <template>
-  <img src="./assets/logo.png" alt="Vue logo" />
   <div id="nav">
     <router-link to="/">Help</router-link> |
     <router-link to="/about">About</router-link>
@@ -26,7 +25,7 @@ export default defineComponent({
 }
 
 #nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 #nav a {

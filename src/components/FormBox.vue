@@ -1,7 +1,9 @@
 <template>
   <form class="form-box" @submit.prevent>
-    <fieldset class="form-bpx__fieldset">
+    <p>Form</p>
+    <fieldset class="form-box__fieldset">
       <legend>inputフォーム</legend>
+      <!-- input text -->
       <div class="form-box__input">
         <base-label id="sample-text">テキスト</base-label>
         <base-input
@@ -12,6 +14,7 @@
           v-model:value="state.sampleText"
         />
       </div>
+      <!-- input password -->
       <div class="form-box__input">
         <base-label id="sample-password">パスワード</base-label>
         <base-input
@@ -22,6 +25,7 @@
           v-model:value="state.samplePassword"
         />
       </div>
+      <!-- input textarea -->
       <div class="form-box__input">
         <base-label id="sample-textarea">テキスエリア</base-label>
         <base-text-area
@@ -34,33 +38,38 @@
         />
       </div>
     </fieldset>
-    <fieldset class="form-bpx__fieldset">
-      <base-label id="front-used">Frontend</base-label>
+    <!-- radio -->
+    <fieldset class="form-box__fieldset">
       <legend>使ったことのあるフレームワークは?</legend>
-      <base-select
-        id="front-used"
-        name="front-used"
-        :options="selects"
-        v-model:value="state.sampleSelect"
-      />
-    </fieldset>
-    <fieldset class="form-bpx__fieldset">
-      <legend>使ったことのある言語は?</legend>
       <base-radio
-        name="backend-used"
+        name="frontend-used"
         :options="radios"
         v-model:value="state.sampleRadio"
       />
     </fieldset>
-    <fieldset class="form-bpx__fieldset">
-      <legend>今後学びたい言語は?</legend>
+    <!-- checkbox -->
+    <fieldset class="form-box__fieldset">
+      <legend>使ったことのあるバックエンド系言語は?</legend>
       <base-check-box
-        name="next-learning"
+        name="backend-used"
         :options="checkboxes"
         v-model:value="state.sampleCheck"
       />
     </fieldset>
-    <input type="submit" value="確定" @click="sendResult" />
+    <!-- select box -->
+    <fieldset class="form-box__fieldset">
+      <base-label id="future-learning">Future Learning</base-label>
+      <legend>今後学びたい言語は?</legend>
+      <base-select
+        id="future-learning"
+        name="future-learning"
+        :options="selects"
+        v-model:value="state.sampleSelect"
+      />
+    </fieldset>
+    <div class="form-box__input">
+      <input type="submit" value="確定" @click="sendResult" />
+    </div>
   </form>
 </template>
 
@@ -105,19 +114,19 @@ export default defineComponent({
 
 <style scoped>
 .form-box {
-  margin: 0 auto;
-  width: 60%;
+  width: 50%;
+  border: 2px dotted #2c3e50;
 }
 
-.form-bpx__fieldset {
-  margin: 10px auto;
+.form-box__fieldset {
+  margin: 5px auto;
   width: 80%;
 }
 
 .form-box__input {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  width: 60%;
+  margin: 5px auto;
+  width: 80%;
 }
 </style>

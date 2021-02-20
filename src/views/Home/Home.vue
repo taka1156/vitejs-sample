@@ -1,4 +1,5 @@
 <template>
+  <img src="../../assets/logo.png" alt="Vue logo" />
   <HelloWorld msg="Vite.js + Vue + TypeScript" />
 </template>
 

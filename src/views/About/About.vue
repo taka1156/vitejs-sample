@@ -1,9 +1,17 @@
 <template>
   <h1>About</h1>
-  <form-box @send-result="sendResult" />
-  <template v-for="(result, index) in state.results" :key="`result_${index}`">
-    <p>{{ result }}</p>
-  </template>
+  <div class="about">
+    <form-box @send-result="sendResult" />
+    <div class="result">
+      <p>Result</p>
+      <template
+        v-for="(result, index) in state.results"
+        :key="`result_${index}`"
+      >
+        <p>{{ result }}</p>
+      </template>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,4 +37,16 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.about {
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+  width: 80%;
+}
+
+.result {
+  border: 2px dotted #42b983;
+  width: 50%;
+}
+</style>

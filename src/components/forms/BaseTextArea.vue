@@ -52,4 +52,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+textarea {
+  resize: none;
+  width: 100%;
+}
+</style>

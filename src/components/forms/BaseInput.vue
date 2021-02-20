@@ -51,4 +51,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+input {
+  width: 100%;
+}
+</style>
