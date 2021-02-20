@@ -38,7 +38,7 @@ jobs:
     #    github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: build
-      run: yarn build
+      run: yarn build:github
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
