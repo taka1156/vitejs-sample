@@ -7,13 +7,14 @@ import vue from '@vitejs/plugin-vue';
 // https://zenn.dev/konnyaku256/scraps/6e8f78642cde2c#comment-d7b575d6d29c05
 export default defineConfig({
   publicDir: process.env.NODE_ENV === 'production' ? '/vitejs-sample/' : '/',
+  build: {
+    outDir: 'docs',
+    assetsDir: './'
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '/src')
     }
-  },
-  build: {
-    assetsDir: './'
   },
   plugins: [vue()]
 });
