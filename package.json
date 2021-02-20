@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite --mode=development",
     "build": "vite build --mode=production",
-    "build:github": "vite build --mode=production -- --base=/vitejs-sample",
+    "build:github": "vite build --mode=production -- --base=/vitejs-sample/",
     "serve": "vite preview",
     "lint": "eslint --ext .ts,.vue ."
   },
