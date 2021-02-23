@@ -1,4 +1,4 @@
-const checkboxes: CheckItem[] = [
+const checkboxes: InputItem[] = [
   {
     id: 'php',
     label: 'PHP',
@@ -16,7 +16,7 @@ const checkboxes: CheckItem[] = [
   }
 ];
 
-const radios: RadioItem[] = [
+const radios: InputItem[] = [
   {
     id: 'vue',
     label: 'Vue',
@@ -34,12 +34,14 @@ const radios: RadioItem[] = [
   }
 ];
 
-const selects: SelectItem[] = [
+const selects: InputItem[] = [
   {
+    id: 'go',
     label: 'Go',
     value: 'go'
   },
   {
+    id: 'rust',
     label: 'Rust',
     value: 'Rust'
   }
