@@ -1,7 +1,7 @@
 <template>
   <select :id="id" :name="name" @change="updateValue">
     <option disabled selected value>選択してください</option>
-    <template v-for="(option, index) in options" :key="`${name}_${index}`">
+    <template v-for="option in options" :key="option.id">
       <option :value="option.value">
         {{ option.label }}
       </option>
@@ -24,7 +24,7 @@ export default defineComponent({
       required: true
     },
     options: {
-      type: Array as PropType<SelectItem[]>,
+      type: Array as PropType<InputItem[]>,
       required: true
     }
   },

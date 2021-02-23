@@ -1,5 +1,5 @@
 <template>
-  <template v-for="(option, index) in options" :key="`${name}_${index}`">
+  <template v-for="option in options" :key="option.id">
     <base-label :id="option.id">
       <input
         type="radio"
@@ -31,7 +31,7 @@ export default defineComponent({
       required: true
     },
     options: {
-      type: Array as PropType<RadioItem[]>,
+      type: Array as PropType<InputItem[]>,
       required: true
     }
   },
