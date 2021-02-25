@@ -84,6 +84,13 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.31.tgz#72286bd33d137aa0d152d47ec7c1762563d34055"
   integrity sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
 
+"@types/vuelidate@^0.7.13":
+  version "0.7.13"
+  resolved "https://registry.yarnpkg.com/@types/vuelidate/-/vuelidate-0.7.13.tgz#6e7249e1d6b72b3aed14f4439a082e14662c485e"
+  integrity sha512-CFyaS5yov3HjwoZrQyehiE1cNkyuN0/EDQfpeneWQFC9onJ0ieQL6dgFxN6zzPMHDZ87If3UH9WcgkPB4vbcoQ==
+  dependencies:
+    vue "^2.6.11"
+
 "@typescript-eslint/eslint-plugin@^4.15.1":
   version "4.15.1"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.15.1.tgz#835f64aa0a403e5e9e64c10ceaf8d05c3f015180"
@@ -250,6 +257,20 @@
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.5.tgz#c131d88bd6713cc4d93b3bb1372edb1983225ff0"
   integrity sha512-gYsNoGkWejBxNO6SNRjOh/xKeZ0H0V+TFzaPzODfBjkAIb0aQgBuixC1brandC/CDJy1wYPwSoYrXpvul7m6yw==
+
+"@vuelidate/core@^2.0.0-alpha.14":
+  version "2.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.0-alpha.14.tgz#b92f193693bc45eb51f1e84ac2893f8dfd123fc5"
+  integrity sha512-RFWA7785Bs995AbUig5D199xBUlDIAFXZIjAv78G9g1JwwRREDOZV8g41Umx2jQr9rGyUlgepgb+bZ4223NFNw==
+  dependencies:
+    vue-demi "^0.6.0"
+
+"@vuelidate/validators@^2.0.0-alpha.12":
+  version "2.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.0-alpha.12.tgz#7be5dede7d35b7f9bbe4190d5fe5aa94fedae749"
+  integrity sha512-z+SuLnpdcb/3YA1avBjySbc90rQ8dYlRnWBAmy6xtjlgf6vB2nCrYR1pNYnRp8bXaTBszC3Wojjgu/Ez8F603A==
+  dependencies:
+    vue-demi "^0.6.0"
 
 acorn-jsx@^5.2.0, acorn-jsx@^5.3.1:
   version "5.3.1"
@@ -1409,6 +1430,11 @@ vite@^2.0.1:
   optionalDependencies:
     fsevents "~2.3.1"
 
+vue-demi@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.6.1.tgz#6949c900a295d9c40e1fa5a74a2849b58cc57325"
+  integrity sha512-2DI0owOzgEDnEBoXpp0nTBquAWLZqVf/+AOJpPUnviT17unMELEPNy5BdSRnQEz+DA0STtqaz+MZtwhzlDHm5Q==
+
 vue-eslint-parser@^7.0.0, vue-eslint-parser@^7.5.0:
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.5.0.tgz#b68221c55fee061899afcfb4441ec74c1495285e"
@@ -1425,6 +1451,11 @@ vue-router@4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.4.tgz#ad9b4b7bbdad622407b4ff189b1646f48c1e9053"
   integrity sha512-uN6PDEaYdU9aRO7mU+Dkr1uaY49hV3fucEDG/Vre/Qj8ct3RoJS16vcPrvKVzn69zDDjBV5b9Xw7fZA9r6b/Iw==
+
+vue@^2.6.11:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
+  integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
 
 vue@^3.0.5:
   version "3.0.5"
