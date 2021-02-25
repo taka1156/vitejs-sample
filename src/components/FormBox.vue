@@ -1,18 +1,29 @@
 <template>
   <form class="form-box" @submit.prevent>
-    <base-errors />
+    {{ validator.$errors.length }}
     <p>Form</p>
     <fieldset class="form-box__fieldset">
       <legend>inputフォーム</legend>
       <!-- input text -->
       <div class="form-box__input">
-        <base-label id="sample-text">テキスト</base-label>
+        <base-label id="sample-name">name</base-label>
         <base-input
-          id="sample-text"
-          name="sample-text"
+          id="sample-name"
+          name="sample-name"
           type="text"
-          placeholder="テキスト"
-          v-model:value="state.sampleText"
+          placeholder="ユーザー名"
+          v-model:value="state.sampleName"
+        />
+      </div>
+      <!-- input email -->
+      <div class="form-box__input">
+        <base-label id="sample-email">email</base-label>
+        <base-input
+          id="sample-email"
+          name="sample-email"
+          type="email"
+          placeholder="sample@hoge.com"
+          v-model:value="state.sampleEmail"
         />
       </div>
       <!-- input password -->
@@ -75,16 +86,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, SetupContext } from 'vue';
+import { defineComponent, reactive, SetupContext, computed } from 'vue';
 import BaseLabel from './forms/BaseLabel.vue';
 import BaseCheckBox from './forms/BaseCheckBox.vue';
 import BaseInput from './forms/BaseInput.vue';
 import BaseRadio from './forms/BaseRadio.vue';
 import BaseSelect from './forms/BaseSelect.vue';
 import BaseTextArea from './forms/BaseTextArea.vue';
-import BaseErrors from './forms/BaseErrors.vue';
 import { selects, radios, checkboxes } from '@/constants/index';
-import { isValdete } from '@/valdete/InputValdete';
+// https://vuelidate-next.netlify.app/
+import { useVuelidate } from '@vuelidate/core';
+import { helpers, email, required } from '@vuelidate/validators';
 
 export default defineComponent({
   name: 'FormBox',
@@ -94,12 +106,12 @@ export default defineComponent({
     'base-text-area': BaseTextArea,
     'base-check-box': BaseCheckBox,
     'base-radio': BaseRadio,
-    'base-select': BaseSelect,
-    'base-errors': BaseErrors
+    'base-select': BaseSelect
   },
   setup(props, context: SetupContext) {
     const state = reactive<InputState>({
-      sampleText: '',
+      sampleName: '',
+      sampleEmail: '',
       samplePassword: '',
       sampleTextarea: '',
       sampleRadio: '',
@@ -107,16 +119,67 @@ export default defineComponent({
       sampleCheck: []
     });
 
-    const sendResult = () => {
-      const RESULTS = Object.entries(state).map(([, v]) => v);
-      if (RESULTS.some(v => isValdete(v))) {
-        alert('未入力があります。');
-        return;
+    const rules = {
+      sampleName: {
+        required: helpers.withMessage('nameは必須入力です。', required)
+      },
+      sampleEmail: {
+        required: helpers.withMessage('emailは必須入力です。', required),
+        email
+      },
+      samplePassword: {
+        required: helpers.withMessage('passwordは必須入力です。', required)
+      },
+      sampleTextarea: {
+        required: helpers.withMessage(
+          'テキストエリアは必須入力です。',
+          required
+        )
+      },
+      sampleRadio: {
+        required: helpers.withMessage(
+          'フレームワークの質問は必須入力です。',
+          required
+        )
+      },
+      sampleSelect: {
+        required: helpers.withMessage(
+          'バックエンドの質問は必須入力です。',
+          required
+        )
+      },
+      sampleCheck: {
+        required: helpers.withMessage(
+          '今後学びたい言語は必須入力です。',
+          required
+        )
       }
-      context.emit('send-result', state);
     };
 
-    return { state, sendResult, selects, radios, checkboxes };
+    // validator.$errorsの型がない
+    const validator = useVuelidate(rules, state, { $lazy: true });
+
+    const canSubmit = computed(() => {
+      return !validator.value.$invalid && validator.value.$dirty;
+    });
+
+    const sendResult = async () => {
+      await validator.value.$validate();
+      if (canSubmit.value) {
+        context.emit('send-result', state);
+      } else {
+        context.emit('send-errors', validator.value.$errors);
+      }
+    };
+
+    return {
+      state,
+      sendResult,
+      selects,
+      radios,
+      checkboxes,
+      validator
+    };
   }
 });
 </script>

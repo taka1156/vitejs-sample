@@ -5,18 +5,19 @@
       v-for="(error, index) in errors"
       :key="`error_${index}`"
     >
-      {{ error }}
+      {{ error.$message }}
     </p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+
 export default defineComponent({
   name: 'BaseErrors',
   props: {
     errors: {
-      type: Array as PropType<string[]>,
+      type: Array as PropType<ValidateError[]>,
       default: () => []
     }
   }

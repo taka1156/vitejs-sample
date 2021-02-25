@@ -5,7 +5,8 @@ type InputItem = {
 };
 
 type InputState = {
-  sampleText: string;
+  sampleName: string;
+  sampleEmail: string;
   samplePassword: string;
   sampleTextarea: string;
   sampleRadio: string;
@@ -13,6 +14,11 @@ type InputState = {
   sampleCheck: string[];
 };
 
+type ValidateError = {
+  $message: string;
+};
+
 type ResultState = {
   results: null | InputState;
+  errors: ValidateError[];
 };

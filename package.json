@@ -8,11 +8,14 @@
     "lint": "eslint --ext .ts,.vue ."
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.14",
+    "@vuelidate/validators": "^2.0.0-alpha.12",
     "vue": "^3.0.5",
     "vue-router": "4"
   },
   "devDependencies": {
     "@types/node": "^14.14.31",
+    "@types/vuelidate": "^0.7.13",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "@vitejs/plugin-vue": "^1.1.4",
