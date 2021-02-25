@@ -10,7 +10,7 @@ type InputState = {
   sampleTextarea: string;
   sampleRadio: string;
   sampleSelect: string;
-  sampleCheck: [];
+  sampleCheck: string[];
 };
 
 type ResultState = {

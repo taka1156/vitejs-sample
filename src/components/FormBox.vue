@@ -1,5 +1,6 @@
 <template>
   <form class="form-box" @submit.prevent>
+    <base-errors />
     <p>Form</p>
     <fieldset class="form-box__fieldset">
       <legend>inputフォーム</legend>
@@ -81,7 +82,9 @@ import BaseInput from './forms/BaseInput.vue';
 import BaseRadio from './forms/BaseRadio.vue';
 import BaseSelect from './forms/BaseSelect.vue';
 import BaseTextArea from './forms/BaseTextArea.vue';
+import BaseErrors from './forms/BaseErrors.vue';
 import { selects, radios, checkboxes } from '@/constants/index';
+import { isValdete } from '@/valdete/InputValdete';
 
 export default defineComponent({
   name: 'FormBox',
@@ -91,7 +94,8 @@ export default defineComponent({
     'base-text-area': BaseTextArea,
     'base-check-box': BaseCheckBox,
     'base-radio': BaseRadio,
-    'base-select': BaseSelect
+    'base-select': BaseSelect,
+    'base-errors': BaseErrors
   },
   setup(props, context: SetupContext) {
     const state = reactive<InputState>({
@@ -104,6 +108,11 @@ export default defineComponent({
     });
 
     const sendResult = () => {
+      const RESULTS = Object.entries(state).map(([, v]) => v);
+      if (RESULTS.some(v => isValdete(v))) {
+        alert('未入力があります。');
+        return;
+      }
       context.emit('send-result', state);
     };
 
