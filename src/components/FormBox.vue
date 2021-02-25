@@ -1,6 +1,5 @@
 <template>
   <form class="form-box" @submit.prevent>
-    {{ validator.$errors.length }}
     <p>Form</p>
     <fieldset class="form-box__fieldset">
       <legend>inputフォーム</legend>
@@ -115,8 +114,8 @@ export default defineComponent({
       samplePassword: '',
       sampleTextarea: '',
       sampleRadio: '',
-      sampleSelect: '',
-      sampleCheck: []
+      sampleCheck: [],
+      sampleSelect: ''
     });
 
     const rules = {
@@ -125,7 +124,10 @@ export default defineComponent({
       },
       sampleEmail: {
         required: helpers.withMessage('emailは必須入力です。', required),
-        email
+        email: helpers.withMessage(
+          'メールアドレスの形式が正しくありません。',
+          email
+        )
       },
       samplePassword: {
         required: helpers.withMessage('passwordは必須入力です。', required)
@@ -142,21 +144,20 @@ export default defineComponent({
           required
         )
       },
-      sampleSelect: {
+      sampleCheck: {
         required: helpers.withMessage(
-          'バックエンドの質問は必須入力です。',
+          'バックエンド系言語の質問は必須入力です。',
           required
         )
       },
-      sampleCheck: {
+      sampleSelect: {
         required: helpers.withMessage(
-          '今後学びたい言語は必須入力です。',
+          '今後学びたい言語の質問は必須入力です。',
           required
         )
       }
     };
 
-    // validator.$errorsの型がない
     const validator = useVuelidate(rules, state, { $lazy: true });
 
     const canSubmit = computed(() => {
@@ -167,9 +168,8 @@ export default defineComponent({
       await validator.value.$validate();
       if (canSubmit.value) {
         context.emit('send-result', state);
-      } else {
-        context.emit('send-errors', validator.value.$errors);
       }
+      context.emit('send-errors', validator.value.$errors);
     };
 
     return {
@@ -177,8 +177,7 @@ export default defineComponent({
       sendResult,
       selects,
       radios,
-      checkboxes,
-      validator
+      checkboxes
     };
   }
 });
