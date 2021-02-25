@@ -12,6 +12,16 @@
 <script lang="ts">
 import { defineComponent, PropType, SetupContext } from 'vue';
 
+type InputAttr =
+  | 'text'
+  | 'number'
+  | 'email'
+  | 'url'
+  | 'password'
+  | 'tel'
+  | 'date'
+  | 'time';
+
 export default defineComponent({
   name: 'BaseInput',
   props: {
@@ -24,7 +34,7 @@ export default defineComponent({
       required: true
     },
     type: {
-      type: String as PropType<string>,
+      type: String as PropType<InputAttr>,
       required: true
     },
     value: {

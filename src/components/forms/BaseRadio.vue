@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, SetupContext, onMounted } from 'vue';
+import { defineComponent, PropType, SetupContext } from 'vue';
 import BaseLabel from './BaseLabel.vue';
 
 export default defineComponent({
@@ -41,10 +41,6 @@ export default defineComponent({
         context.emit('update:value', e.target.value);
       }
     };
-
-    onMounted(() => {
-      context.emit('update:value', props.options[0].value);
-    });
 
     return {
       props,
