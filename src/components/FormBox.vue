@@ -10,7 +10,7 @@
           id="sample-name"
           name="sample-name"
           type="text"
-          placeholder="ユーザー名"
+          placeholder="name"
           v-model:value="state.sampleName"
         />
       </div>
@@ -27,12 +27,12 @@
       </div>
       <!-- input password -->
       <div class="form-box__input">
-        <base-label id="sample-password">パスワード</base-label>
+        <base-label id="sample-password">password</base-label>
         <base-input
           id="sample-password"
           name="sample-password"
           type="password"
-          placeholder="パスワード"
+          placeholder="password"
           v-model:value="state.samplePassword"
         />
       </div>
